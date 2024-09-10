@@ -3,13 +3,13 @@
 }
 
 body {
-    width: 900px;
+    /* width: 960px; */
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    width: auto;
+    width: 960px;
 }
 
 .square {
