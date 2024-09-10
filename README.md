@@ -17,3 +17,7 @@ Also, the hover should leave the "pixel" shaded in that color, which I think mea
 ## Fixing the squares
 
 I've reworked the javascript to set the boxes. I found a way to get the dimensions from the css file, modify them, and then pass the new files back. The box width/height (as they are the same) are just the containerWidth (obtained from the css) divided by the number of squares. I've left the for statement the same, meaning my grid will always be a square, but I think that could be changed relatively easily.
+
+## Fixing the hover
+
+Added code to the for loop for event listeners. I used "mouseenter" to handle the color change when the cursor passes over a square, but I didn't love that it is instantaneous, as it just leads to scribbles, so I used modifier keys to give the user some control. To "draw", hold down the shift key. To erase, hold down the alt/option key. I also added a click listener to give very fine control, but this actually doesn't work as well, I think because the mouseenter listener conflicts a little bit. I think you have to enter the "pixel", and then click for it to work. But, it does turn the "pixel" on AND off, so that's nice. This allowed me to remove the :hover css style.
