@@ -1,4 +1,4 @@
-let numberOfSquares = 4;
+let numberOfSquares = 16;
 
 drawingArea(numberOfSquares)
 // document.addEventListener("DOMContentLoaded", drawingArea(numberOfSquares));
