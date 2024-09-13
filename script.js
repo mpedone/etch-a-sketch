@@ -1,4 +1,4 @@
-let numberOfSquares = 24;
+let numberOfSquares = 4;
 
 drawingArea(numberOfSquares)
 // document.addEventListener("DOMContentLoaded", drawingArea(numberOfSquares));
@@ -18,6 +18,8 @@ function drawingArea(columns) {
         container.appendChild(square);
         square.addEventListener("mouseenter", (e) => {
             let keys = [];
+            // let randoColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+            // styles.cssRules[6].style["backgroundColor"] = randoColor;
             if (e.shiftKey) square.classList.add('purpleSquare');
             if (e.altKey) square.classList.remove('purpleSquare');
         });
@@ -34,13 +36,35 @@ function clearArea(size) {
     }
 }
 
+function sizeValidation(old_size) {
+    new_size = prompt("Enter a number for the size of the grid:");
+    console.log(Number.isInteger(parseInt(new_size)));
+    if (new_size === null || new_size === '') {
+        return -1;
+    } else if (new_size <= 0) {
+        alert("Please enter a value greater than 0");
+        return sizeValidation(old_size)
+    } else if (new_size > 100) {
+        alert("Maximum size of 100");
+        return sizeValidation(old_size)
+    } else if (!Number.isInteger(parseFloat(new_size))) {
+        alert("Please enter a whole number");
+        return sizeValidation(old_size)
+    }else {
+        return new_size;
+    }
+}
+
 const grid_button = document.querySelector("#grid_size");
 let size;
 grid_button.addEventListener("click", () => {
-    size = prompt("Enter a number for the size of the grid:");
-    clearArea(numberOfSquares);
-    numberOfSquares = size;
-    drawingArea(numberOfSquares);
+    // size = prompt("Enter a number for the size of the grid:");
+    size = sizeValidation(numberOfSquares);
+    if (size !== -1){
+        clearArea(numberOfSquares);
+        numberOfSquares = size;
+        drawingArea(numberOfSquares);
+    }
 })
 
 const clear_grid_btn = document.querySelector("#clear_grid");

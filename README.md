@@ -41,6 +41,21 @@ I figured out the issue with clicking on a "pixel" - I'd had the code for that i
 
 I added the button to trigger the prompt that allows the user to set the size of the grid. Next, I needed to find a way to clear the current grid and re-size it. I wrote the function `clearArea()` to remove all children of the container div. So, when the user enters a number and clicks ok/presses enter, that number is saved as `size`, `clearArea()` is called with the current size (`numberOfSquares`), then the new size is saved as `numberOfSquares`, and `drawingArea()` is called with `numberOfSquares`. This way, the current width of the drawing area is always saved in `numberOfSquares` and so whenever `clearArea()` is called, the correct values are passed in. I also added a button to just clear the area (it calls the clear and draw functions with the current width).
 
-## Controlling the size
+### Controlling the size
 
 Next, I need to add some value-checking so that the user can't enter values less than 1 or greater than 100. I also want to have a condition for if the user cancels the prompt. All of these cause unwanted behaviors. At that point, I think the project will be done, and I can start tweaking it.
+
+Added a function `sizeValidation()` that is called when the user clicks the "Set Screen Size" button. I used a recursive function to check the value entered, and an if statement in the eventhandler, so that if the user cancels or doesn't enter a number, the grid doesn't clear. If the value is 0 or negative, the function alerts the user, then calls itself to prompt the user for a value. If the value is greater than 100, it alerts that the max is 100, and calls itself. Finally, if the value entered is not a whole number... This got interesting. The result of the prompt is a string, and that gets passed back into the rest of the script as such, but I needed to check that it was a whole number in string form. Now, `isNaN()` is a great built-in function that will check the contents of a string, but it doesn't care about number type (float, int, etc), so "Four" would be caught, but "4.2" would not. So, I turned to `Number.isInteger()`, but obviously that needs a number object, meaning I had to convert the input.  `parseInt()` effectively rounds the number down, returning just the integer portion, so that would always return true. `parseFloat()`, however, returns the full float representation. Additionally, even if the integer is entered in float notation for some reason (i.e. 4.0), and `parseFloat()` returns it with that trailing 0, `Number.isInteger(n.0)` still evaluates to true. So, I to convert the input to float, and then check if it's an integer. If not, alert the user and ask for a whole number.
+
+## Extra Credit
+
+Okay, so I am going to (try) to go off-book a bit here. The Odin Project suggests as "extra credit" two challenges:
+
+1. Randomize the colors, so that each square is a different color.
+2. Tweak the opacity, so that each colored square starts at a low opacity and gets 10% darker each time it is colored.
+
+I think that I will try to implement both of these. However, I want to make them both optional. I supposed I should get them working first.
+
+### Random Colors
+
+I have an idea about this, but it involves changing how my code works, which, honestly, is probably a good idea. Right now, I have two classes for the squares. One is the default, the other has a background color applied. When the square is changed, the color class is toggled (so, added if it wasn't there, removed if it was). I'm not sure, but I think I might need to break the color changing code out from the drawingArea() function, which, now that I think about it, makes some sense, as that function should simply set the drawing area, and not handle the colors. From there, I can work on changing the colors of individual squares.
