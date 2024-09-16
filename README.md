@@ -59,3 +59,5 @@ I think that I will try to implement both of these. However, I want to make them
 ### Random Colors
 
 I have an idea about this, but it involves changing how my code works, which, honestly, is probably a good idea. Right now, I have two classes for the squares. One is the default, the other has a background color applied. When the square is changed, the color class is toggled (so, added if it wasn't there, removed if it was). I'm not sure, but I think I might need to break the color changing code out from the drawingArea() function, which, now that I think about it, makes some sense, as that function should simply set the drawing area, and not handle the colors. From there, I can work on changing the colors of individual squares.
+
+Getting it to work took a bit. Adding a class to the div caused ALL of the colored squares to change at the same time, which is kind of a cool effect, but not what we were going for. Turns out, I needed to just set the style in-line. I created a random color generating function, then called that each time a square was to be colored so that it would select a random color and apply it to the background-color attribute in-line.

@@ -1,7 +1,6 @@
 let numberOfSquares = 16;
 
 drawingArea(numberOfSquares)
-// document.addEventListener("DOMContentLoaded", drawingArea(numberOfSquares));
 
 function drawingArea(columns) {
     const container = document.querySelector(".container");
@@ -16,28 +15,19 @@ function drawingArea(columns) {
         const square = document.createElement("div");
         square.classList.add("square");
         container.appendChild(square);
-        square.addEventListener("mouseenter", (e) => {
-            let keys = [];
-            // let randoColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
-            // styles.cssRules[6].style["backgroundColor"] = randoColor;
-            if (e.shiftKey) square.classList.add('purpleSquare');
-            if (e.altKey) square.classList.remove('purpleSquare');
-        });
-        square.addEventListener("click", () => {
-            square.classList.toggle('purpleSquare');
-        });
     }
-}
+    colorSquare();
+};
 
 function clearArea(size) {
     const container = document.querySelector(".container");
     for(let i=0; i<(size**2); i++){
         container.removeChild(container.firstElementChild);
-    }
-}
+    };
+};
 
 function sizeValidation(old_size) {
-    new_size = prompt("Enter a number for the size of the grid:");
+    new_size = prompt("Enter a number for the size of the grid:", "1");
     console.log(Number.isInteger(parseInt(new_size)));
     if (new_size === null || new_size === '') {
         return -1;
@@ -52,23 +42,46 @@ function sizeValidation(old_size) {
         return sizeValidation(old_size)
     }else {
         return new_size;
-    }
+    };
+};
+
+function randomNumber() {
+    return Math.floor(Math.random() * 255)
 }
+
+function randomColor() {
+    return `rgb(${randomNumber()}, 
+                ${randomNumber()}, 
+                ${randomNumber()})`
+};
+
+function colorSquare(){
+    const squares = document.querySelectorAll(".square");
+    squares.forEach((square) => {
+        square.addEventListener("mouseenter", (e) => {
+            let keys = [];
+            if (e.shiftKey) square.style.backgroundColor = randomColor();
+            if (e.altKey) square.style.backgroundColor = "#efefef"; 
+        });
+        square.addEventListener("click", () => {
+            square.style.backgroundColor = randomColor();
+        });
+    });
+};
 
 const grid_button = document.querySelector("#grid_size");
 let size;
 grid_button.addEventListener("click", () => {
-    // size = prompt("Enter a number for the size of the grid:");
     size = sizeValidation(numberOfSquares);
     if (size !== -1){
         clearArea(numberOfSquares);
         numberOfSquares = size;
         drawingArea(numberOfSquares);
-    }
-})
+    };
+});
 
 const clear_grid_btn = document.querySelector("#clear_grid");
 clear_grid_btn.addEventListener("click", () => {
     clearArea(numberOfSquares);
     drawingArea(numberOfSquares);
-})
+});
