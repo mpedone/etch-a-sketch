@@ -61,3 +61,26 @@ I think that I will try to implement both of these. However, I want to make them
 I have an idea about this, but it involves changing how my code works, which, honestly, is probably a good idea. Right now, I have two classes for the squares. One is the default, the other has a background color applied. When the square is changed, the color class is toggled (so, added if it wasn't there, removed if it was). I'm not sure, but I think I might need to break the color changing code out from the drawingArea() function, which, now that I think about it, makes some sense, as that function should simply set the drawing area, and not handle the colors. From there, I can work on changing the colors of individual squares.
 
 Getting it to work took a bit. Adding a class to the div caused ALL of the colored squares to change at the same time, which is kind of a cool effect, but not what we were going for. Turns out, I needed to just set the style in-line. I created a random color generating function, then called that each time a square was to be colored so that it would select a random color and apply it to the background-color attribute in-line.
+
+### Opacity
+
+I added two variables, counter and opacity, so that I could track how often a square has been interacted with. As I have draw and erase functionality, I also needed to evaluate which was being done. So, a draw event increments the counter by 1, an erase event decrements it by one. Opacity is the counter multiplied by 0.1. I also added a check so that the counter would never actually go above 10 or less than 0, so that if one were to darken a square more than 10 times, erasing it would set the opacity to the correct value (i.e. if one interacted with a square 16 times, the counter would be at 16; if one then tried to decrease the opacity, the code would set the opacity to 15*0.1 = 1.5 instead of 9*0.1 = 0.9). I left the click functionality as changing the square to a random color (at the current opacity), because I don't really care for either the random colors or the opacity change, and will be removing all of that the next time I work on this project.
+
+## Next Steps
+
+1. I would like to strip out the random colors as well as the opacity, and get back to a single color with the style toggle.
+2. I would like to allow the user to select a color for the drawing.
+
+  * There are a few ways I could do this.
+    1. drop-down with set selections
+    2. Fields to enter RGB values (maybe sliders/color selection?)
+    3. Text prompt asking for RGB (or even Hex) values
+
+3. Graphics
+
+  * A "case" around the screen, simulating a toy
+  * knobs at the bottom, as in a real Etch-A-Sketch
+  * Move the controls to the bottom of the case, in between the knobs
+
+4. I would like to be able to use the buttons to move the drawing, giving it the feel of a real E-A-S
+5. Save functionality?

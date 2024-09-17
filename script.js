@@ -58,10 +58,31 @@ function randomColor() {
 function colorSquare(){
     const squares = document.querySelectorAll(".square");
     squares.forEach((square) => {
+        let counter = 0;
+        let opacity = 1.0;
         square.addEventListener("mouseenter", (e) => {
-            let keys = [];
-            if (e.shiftKey) square.style.backgroundColor = randomColor();
-            if (e.altKey) square.style.backgroundColor = "#efefef"; 
+            // if (e.shiftKey) square.style.backgroundColor = randomColor();
+            if (e.shiftKey) {
+                if (counter <= 10) {
+                    ++counter;
+                    opacity = 0.1 * counter;
+                }
+                if (opacity > 1.0) {
+                    counter = 10;
+                    square.style.backgroundColor = randomColor();
+                } else {
+                    square.style.cssText = 
+                    `background-color: ${randomColor()}; 
+                    opacity: ${opacity};`;
+                }
+            }
+            if (e.altKey) {
+                if (counter > 0){
+                    --counter;
+                    opacity = 0.1 * counter;
+                }
+                square.style.opacity = opacity;
+            }
         });
         square.addEventListener("click", () => {
             square.style.backgroundColor = randomColor();

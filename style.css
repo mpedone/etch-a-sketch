@@ -26,12 +26,13 @@ body {
     flex-wrap: wrap;
     width: 640px;
     cursor: crosshair;
+    background-color: #efefef;
 }
 
 .square {
     width: 16px;
     height: 16px;
-    background-color: #efefef;
+    /* background-color: #efefef; */
     /* border: 1px solid #0003; */
 }
 
