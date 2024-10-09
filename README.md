@@ -68,19 +68,19 @@ I added two variables, counter and opacity, so that I could track how often a sq
 
 ## Next Steps
 
-1. I would like to strip out the random colors as well as the opacity, and get back to a single color with the style toggle.
+1. ~I would like to strip out the random colors as well as the opacity, and get back to a single color with the style toggle.~
 2. I would like to allow the user to select a color for the drawing.
-
-  * There are a few ways I could do this.
-    1. drop-down with set selections
-    2. Fields to enter RGB values (maybe sliders/color selection?)
-    3. Text prompt asking for RGB (or even Hex) values
-
+   * There are a few ways I could do this.
+     1. drop-down with set selections
+     2. Fields to enter RGB values (maybe sliders/color selection?)
+     3. Text prompt asking for RGB (or even Hex) values
 3. Graphics
-
-  * A "case" around the screen, simulating a toy
-  * knobs at the bottom, as in a real Etch-A-Sketch
-  * Move the controls to the bottom of the case, in between the knobs
-
+   * A "case" around the screen, simulating a toy
+   * knobs at the bottom, as in a real Etch-A-Sketch
+   * Move the controls to the bottom of the case, in between the knobs
 4. I would like to be able to use the buttons to move the drawing, giving it the feel of a real E-A-S
 5. Save functionality?
+
+### Progress
+
+I removed the random color functionality, as well as the opacity. I will be linking to this from my personal website, and will continue to work through the "next steps" section.
