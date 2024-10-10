@@ -67,12 +67,12 @@ function colorSquare(){
         });
         square.addEventListener("touchstart", (e) => {
             e.preventDefault();
-            square.classList.toggle('purpleSquare');
+            e.touches.item(0).classList.add('purpleSquare');
         });
-        square.addEventListener("touchmove", (e) => {
-            e.preventDefault();
-            square.classList.toggle('purpleSquare');
-        })
+        // square.addEventListener("touchmove", (e) => {
+        //     e.preventDefault();
+        //     square.classList.toggle('purpleSquare');
+        // })
     });
 };
 
