@@ -19,6 +19,7 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 14pt;
     font-weight: 500;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -38,4 +39,9 @@ body {
 
 .purpleSquare {
     background-color: #990099;
+}
+
+.controls p.fine-print {
+    font-size: 10pt;
+    margin-top: 0;
 }

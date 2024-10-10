@@ -65,14 +65,6 @@ function colorSquare(){
         square.addEventListener("click", () => {
             square.classList.toggle('purpleSquare');
         });
-        square.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            e.touches.item(0).classList.add('purpleSquare');
-        });
-        // square.addEventListener("touchmove", (e) => {
-        //     e.preventDefault();
-        //     square.classList.toggle('purpleSquare');
-        // })
     });
 };
 
