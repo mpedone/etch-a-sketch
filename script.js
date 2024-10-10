@@ -63,7 +63,10 @@ function colorSquare(){
             if (e.altKey) square.classList.remove('purpleSquare');
         });
         square.addEventListener("click", () => {
-            square.classList.toggle('purpleSquare');;
+            square.classList.toggle('purpleSquare');
+        });
+        square.addEventListener("touchstart", () => {
+            square.classList.toggle('purpleSquare');
         });
     });
 };
